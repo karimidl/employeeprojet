@@ -18,6 +18,7 @@ import com.server.hr.service.EmployeeService;
 
 @RestController
 @RequestMapping("/employee")
+
 public class EmployeeResource {
 	private final EmployeeService emplyeeService;
 
@@ -46,9 +47,10 @@ public class EmployeeResource {
     	return new ResponseEntity<>(employee,HttpStatus.OK);
     }
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id){
-		emplyeeService.deletEemployee(id);
-		return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id") Long id){
+		emplyeeService.deleteEmployee(id);
+		return new ResponseEntity<String>("Employee is deleted successfully !!!",HttpStatus.OK);
 	}
+    
     
 }

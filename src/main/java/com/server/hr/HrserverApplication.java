@@ -1,5 +1,7 @@
 package com.server.hr;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -7,10 +9,18 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import com.server.hr.model.Conje;
+import com.server.hr.reposi.ConjeRepo;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 @SpringBootApplication
 public class HrserverApplication {
+	
+	
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(HrserverApplication.class, args);
@@ -32,4 +42,12 @@ public class HrserverApplication {
 		return new CorsFilter(urlBasedCorsConfigurationSource);
 	}
 
+	/*@Override
+	public void run(String... args) throws Exception {
+		DateFormat df=new SimpleDateFormat("dd/MM/yyyy");
+		
+		//conjeRepo.save(new Conje("type1",df.parse("12/12/2021"),df.parse("28/12/2021"),25));
+	        
+	}*/
+              
 }

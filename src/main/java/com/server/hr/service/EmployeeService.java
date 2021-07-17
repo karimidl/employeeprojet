@@ -1,7 +1,10 @@
 package com.server.hr.service;
 
 
-import java.util.UUID;
+import java.util.List;
+
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +16,7 @@ import com.server.hr.reposi.EmployeeRepo;
 
 
 @Service
+@Transactional
 public class EmployeeService {
 	private final EmployeeRepo employeeRepo;
 
@@ -22,10 +26,10 @@ public class EmployeeService {
 		this.employeeRepo = employeeRepo;
 	}
 	public Employee addEmployee(Employee employee) {
-		employee.setMatricule(UUID.randomUUID().toString());
+		
 		return employeeRepo.save(employee);
 	}
-	public java.util.List<Employee> findAllEmployee(){
+	public List<Employee> findAllEmployee(){
 		return employeeRepo.findAll();
 	}
 	public Employee updateEmployee(Employee employee) {
@@ -34,7 +38,7 @@ public class EmployeeService {
 	public Employee findEmployeeById(Long id) {
 		return employeeRepo.findEmployeeById(id).orElseThrow(()-> new UserNotFoundException("Agent N°" +id+ "pas trouvé"));
 	}
-	public void deletEemployee(Long id) {
+	public void deleteEmployee(Long id) {
 		employeeRepo.deleteEmployeeById(id);
 	}
 	
